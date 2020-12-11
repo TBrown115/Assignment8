@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +12,13 @@ namespace People.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ViewTShirtPage : ContentPage
     {
+
         public ViewTShirtPage()
         {
             InitializeComponent();
+
+          
         }
+
     }
 }
