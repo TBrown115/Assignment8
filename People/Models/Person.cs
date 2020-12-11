@@ -1,18 +1,27 @@
-﻿using SQLite;
+using SQLite;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace People.Models
 {
-    [Table("people")]
-    public class Person
+    [Table("tshirt")]
+    public class tshirt
     {
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
-        [MaxLength(250), Unique]
-        public string Name { get; set; }
-        public string Gender { get; set; }
-        public string TShirt_Size { get; set; }
-        public string DateOfOrder { get; set; }
-        public string TShirt_Color { get; set; }
-        public string ShippingAddress { get; set; }
+
+            [PrimaryKey, AutoIncrement]
+            public int Id { get; set; }
+
+            [MaxLength(250), Unique]
+            public string Names { get; set; }
+            public string Genders { get; set; }
+            public string TShirtSizes { get; set; }
+            public string DateOfOrders { get; set; }
+            public string TShirtColors { get; set; }
+            public string Shipping_Addresses { get; set; }
+
+
+
+
     }
 }
