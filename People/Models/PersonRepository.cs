@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using People.Models;
@@ -6,27 +6,27 @@ using SQLite;
 
 namespace People
 {
-    public class PersonRepository
+    public class TShirtRepository
     {
-        SQLiteConnection conn;
         public string StatusMessage { get; set; }
 
-        public PersonRepository(string dbPath)
+        private SQLiteConnection conn;
+        public TShirtRepository(string dbPath)
         {
             conn = new SQLiteConnection(dbPath);
-            conn.CreateTable<Person>();
+            conn.CreateTable<tshirt>();
         }
 
-        public void AddNewPerson(string name, string gender)
+        public void AddNewTShirt(string name, string gender, string tshirt_size,string date_of_order, string tshirt_color, string shipping_address)
         {
             int result = 0;
             try
             {
-                //basic validation to ensure a name was entered
+                
                 if (string.IsNullOrEmpty(name))
                     throw new Exception("Valid name required");
 
-                result = conn.Insert(new Person { Name = name, Gender = gender });
+                    result = conn.Insert(new tshirt { Names = name, Genders = gender, TShirtSizes= tshirt_size, DateOfOrders = date_of_order, TShirtColors = tshirt_color, Shipping_Addresses = shipping_address });
 
                 StatusMessage = string.Format("{0} record(s) added [Name: {1})", result, name);
             }
@@ -34,20 +34,22 @@ namespace People
             {
                 StatusMessage = string.Format("Failed to add {0}. Error: {1}", name, ex.Message);
             }
+
         }
 
-        public List<Person> GetAllPeople()
+        public List<tshirt> GetProductInfo()
         {
+           
             try
             {
-                return conn.Table<Person>().ToList();
+                return conn.Table<tshirt>().ToList();
             }
             catch (Exception ex)
             {
                 StatusMessage = string.Format("Failed to retrieve data. {0}", ex.Message);
             }
 
-            return new List<Person>();
+            return new List<tshirt>();
         }
     }
 }
