@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+
 using Xamarin.Forms;
 
 namespace People
@@ -12,17 +13,16 @@ namespace People
     {
         string dbPath => FileAccessHelper.GetLocalFilePath("tshirt.db3");
 
-        public static PersonRepository PersonRepo { get; private set; }
-
+        public static TShirtRepository PersonRepo { get; private set; }
         public App()
         {
             InitializeComponent();
 
-            PersonRepo = new PersonRepository(dbPath);
-            var navPage = new NavigationPage(new TShirtPage());
-            navPage.BackgroundColor = Color.FromHex("643B10");
-            MainPage = navPage;
+            PersonRepo = new TShirtRepository(dbPath);
+            var tshirt = new NavigationPage(new TShirtPage());
+            
 
+            MainPage = tshirt;
         }
 
         protected override void OnStart()
